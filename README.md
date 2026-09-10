@@ -13,7 +13,7 @@ An analog-film look photo editor for Android — one tap for daily use, a full m
 ## Features
 
 - Share a photo into the app from anywhere (Gallery, camera roll, any app) — it opens straight into the editor, no import step
-- Tap a preset thumbnail (rendered live against your actual photo) for an instant film-emulation look
+- Tap a preset thumbnail (rendered live against your actual photo) for an instant look
 - Long-press the preview to compare against the original
 - Build your own looks in the manual editor — brightness, contrast, shadows, highlights, structure, sharpness, grain, vignette, temperature, monochrome — then save them as new named presets
 - Save to the gallery or export straight to the share sheet (e.g. KDE Connect to a PC), without cluttering the device with extra files
