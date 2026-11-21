@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- "LF" monogram — L + F glyphs from Segoe UI Black, same extraction/layout convention as the other Literal* app icons (shared "L" path, app-initial second glyph shifted by L's advance width). -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="220"
     android:viewportHeight="220">
   <group
-      android:scaleX="0.032"
-      android:scaleY="-0.032"
-      android:translateX="73.38"
-      android:translateY="132.94">
+      android:scaleX="0.04"
+      android:scaleY="-0.04"
+      android:translateX="64.22"
+      android:translateY="138.66">
     <path
         android:pathData="M141 0V1434H573V338H1067V0Z"
         android:fillColor="#FFFFFF"/>
     <path
-        android:pathData="M1681 1096V838H2107V500H1681V0H1249V1434H2148V1096Z"
+        android:pathData="M1681.0 1096.0V838.0H2107.0V500.0H1681.0V0.0H1249.0V1434.0H2148.0V1096.0H1681.0Z"
         android:fillColor="#FFFFFF"/>
   </group>
 </vector>
