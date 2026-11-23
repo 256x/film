@@ -14,6 +14,7 @@ import fumi.day.literalfilm.domain.model.FilmPreset
 import fumi.day.literalfilm.render.BitmapExifDecoder
 import fumi.day.literalfilm.render.OffscreenRenderer
 import java.util.UUID
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -83,7 +84,17 @@ class FilmEditorViewModel(private val presetRepository: PresetRepository) : View
 
         val appContext = context.applicationContext
         viewModelScope.launch {
-            val bitmap = withContext(Dispatchers.IO) { BitmapExifDecoder.decode(appContext, uri, PREVIEW_MAX_DIMENSION) }
+            val bitmap = try {
+                withContext(Dispatchers.IO) { BitmapExifDecoder.decode(appContext, uri, PREVIEW_MAX_DIMENSION) }
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: Exception) {
+                // No read access to the shared URI, or an undecodable file: back to the empty
+                // state with a message rather than crashing the app.
+                _uiState.update { it.copy(sourceUri = null, isDecoding = false) }
+                _events.emit(FilmEditorEvent.Error("画像を開けませんでした"))
+                return@launch
+            }
             _uiState.update { it.copy(previewBitmap = bitmap, isDecoding = false) }
             regenerateAllThumbnails(bitmap)
         }
